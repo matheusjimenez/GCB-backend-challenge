@@ -1,0 +1,20 @@
+{
+  "name": "BackendChallengeGCB",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --poll --respawn src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "tsyringe": "^4.6.0",
+    "typeorm": "^0.2.41"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.5"
+  }
+}
