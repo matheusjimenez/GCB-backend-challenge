@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn } from 'typeorm';
-import { Specification } from './specification';
+import { Doctor_specification } from './doctor_specification';
 
 @Entity("Doctors")
 class Doctor{
@@ -8,10 +8,10 @@ class Doctor{
     @PrimaryColumn()
     id: string;
 
-    @Column()
+    @Column({ length: 120})
     name: string;
 
-    @Column()
+    @Column({ width: 7 }) //MySQL only
     crm: number;
 
     @Column()
@@ -23,8 +23,8 @@ class Doctor{
     @Column()
     cep: number;
 
-    @OneToMany(()=> Specification, specification => specification.doctor_id)
-    specification: Specification[];
+    @OneToMany(type => Doctor_specification, specification => specification.doctor_id)
+    specification: Doctor_specification[];
 
     @Column()
     display: boolean = true;

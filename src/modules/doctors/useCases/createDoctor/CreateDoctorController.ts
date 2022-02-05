@@ -15,6 +15,17 @@ class CreateDoctorController{
 
          const createDoctorUseCase = container.resolve(CreateDoctorUseCase);
 
+         createDoctorUseCase.execute( 
+            {
+                name, 
+                crm, 
+                phoneNumber, 
+                cellPhone, 
+                cep, 
+                specification
+            }
+        )
+
         return response.status(201).send();
     }
 }

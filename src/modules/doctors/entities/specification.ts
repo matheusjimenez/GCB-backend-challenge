@@ -1,16 +1,14 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
-import { Doctor } from "./doctor";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Doctor_specification } from "./doctor_specification";
 
 @Entity("Specifications")
 class Specification{
-    @PrimaryColumn()
-    id: string;
+    @PrimaryGeneratedColumn()
+    @OneToOne(()=> Doctor_specification, specification => specification.specification_id)
+    id: number;
 
     @Column()
     name: string;
-
-    @ManyToOne(()=> Doctor, doctor_id => doctor_id.specification)
-    doctor_id: Doctor;
 }
 
 export { Specification }

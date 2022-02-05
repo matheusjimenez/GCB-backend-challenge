@@ -5,7 +5,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --poll --respawn src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
+    "seed:create": "ts-node-dev ./node_modules/typeorm/cli -c seed migration:create -n",
+    "seed:run": "ts-node-dev ./node_modules/typeorm/cli -c seed migration:run",
+    "seed:revert": "ts-node-dev ./node_modules/typeorm/cli -c seed migration:revert"
   },
   "dependencies": {
     "express": "^4.17.2",

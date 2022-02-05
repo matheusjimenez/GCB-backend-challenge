@@ -1,14 +1,32 @@
-{
-    "type": "mysql",
-    "port": "3306",
-    "host": "localhost",
-    "username": "root",
-    "password": "strongpassword!",
-    "database": "database_GCB",
-    "logging": false,
-    "migrations": ["./src/database/migrations/*.ts"],
-    "entities": ["./src/modules/**/entities/*.ts"],
-    "cli":{
-        "migrationsDir": "./src/database/migrations"
+[
+    {
+        "name": "default",
+        "type": "mysql",
+        "port": "3306",
+        "host": "localhost",
+        "username": "root",
+        "password": "strongpassword!",
+        "database": "database_GCB",
+        "logging": false,
+        "migrations": ["./src/database/migrations/*.ts"],
+        "entities": ["./src/modules/**/entities/*.ts"],
+        "cli":{
+            "migrationsDir": "./src/database/migrations"
+        }
+    },
+    {
+        "name": "seed",
+        "type": "mysql",
+        "port": "3306",
+        "host": "localhost",
+        "username": "root",
+        "password": "strongpassword!",
+        "database": "database_GCB",
+        "logging": false,
+        "migrations": ["./src/database/seeds/*.ts"],
+        "entities": ["./src/modules/**/entities/*.ts"],
+        "cli":{
+            "migrationsDir": "./src/database/seeds"
+        }
     }
-}
+]
