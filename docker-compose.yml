@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+  database_GCB:
+    image: mysql:5.6
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: database_GCB
+    ports:
+      - "3306:3306"
+    volumes:
+      - pgdata:/data/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "strongpassword!"
+      MYSQL_DATABASE: "database_GCB"
+    restart: always
+
+  app:
+    build: .
+    container_name: doctor_register_app
+    ports:
+        - 3333:3333
+        - 9229:9229
+    volumes:
+        - .:/usr/app
+    links:
+        - database_GCB
+    depends_on:
+        - database_GCB
+
+
+volumes:
+    pgdata:
+        driver: local

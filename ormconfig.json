@@ -1,10 +1,11 @@
 {
-    "type": "postgres",
-    "port": "5432",
+    "type": "mysql",
+    "port": "3306",
     "host": "localhost",
-    "username": "docker",
-    "password": "strongpassword",
+    "username": "root",
+    "password": "strongpassword!",
     "database": "database_GCB",
+    "logging": false,
     "migrations": ["./src/database/migrations/*.ts"],
     "entities": ["./src/modules/**/entities/*.ts"],
     "cli":{

@@ -1,5 +1,6 @@
 import crypto from 'crypto';
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Specification } from './specification';
 
 @Entity("Doctors")
 class Doctor{
@@ -22,8 +23,8 @@ class Doctor{
     @Column()
     cep: number;
 
-    @Column()
-    specification: string[]; // alterar para entidade
+    @OneToMany(()=> Specification, specification => specification.doctor_id)
+    specification: Specification[];
 
     @Column()
     display: boolean = true;
