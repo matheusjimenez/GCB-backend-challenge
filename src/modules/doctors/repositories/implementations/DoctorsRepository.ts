@@ -24,20 +24,28 @@ class DoctorsRepository implements IDoctorRepository{
         await this.repository.save(doctor);
     }
 
+    async list(): Promise<Doctor[]>{
+        return await this.repository.find(
+            {
+                where: { display: true }
+            }
+        )
+    }
+
     async create(data: ICreateDoctorDTO): Promise<void> {
         const doctor_id = crypto.randomUUID();
 
         await getManager().transaction(async transactionalEntityManager => {
-            const specifications: Doctor_specification[] = [];
+            // const specifications: Doctor_specification[] = [];
 
-            data.specification.forEach(specification=>{
-                const doc_spec = new Doctor_specification();
+            // data.specification.forEach(specification=>{
+            //     const doc_spec = new Doctor_specification();
 
-                doc_spec.id = crypto.randomUUID();
-                doc_spec.specification_id = specification.specification_id
+            //     doc_spec.id = crypto.randomUUID();
+            //     doc_spec.specification_id = specification.specification_id
                 
-                specifications.push(doc_spec);
-            });
+            //     specifications.push(doc_spec);
+            // });
 
             const doctor = this.repository.create(
                 {
@@ -50,9 +58,8 @@ class DoctorsRepository implements IDoctorRepository{
                 }
             );
 
-            await transactionalEntityManager.save(specifications);
+            // await transactionalEntityManager.save(specifications);
             await transactionalEntityManager.save(doctor);
-
         });
     }
 

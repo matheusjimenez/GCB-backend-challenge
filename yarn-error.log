@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\mathe\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add reflect-metadata
+  C:\Program Files\nodejs\node.exe C:\Users\mathe\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/xhr2
 
 PATH: 
   C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Python310\Scripts\;C:\Python310\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\mathe\AppData\Local\Microsoft\WindowsApps;C:\Users\mathe\AppData\Roaming\npm;C:\Users\mathe\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;
@@ -14,7 +14,17 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\dev\BackendChallengeGCB\node_modules\.bin\ts-node-dev'
+  Error: https://registry.yarnpkg.com/@types%2fxhr2: Not found
+      at Request.params.callback [as _callback] (C:\Users\mathe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:67029:18)
+      at Request.self.callback (C:\Users\mathe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140883:22)
+      at Request.emit (node:events:390:28)
+      at Request.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141855:10)
+      at Request.emit (node:events:390:28)
+      at IncomingMessage.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141777:12)
+      at Object.onceWrapper (node:events:509:28)
+      at IncomingMessage.emit (node:events:402:35)
+      at endReadableNT (node:internal/streams/readable:1343:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
@@ -24,13 +34,18 @@ npm manifest:
     "license": "MIT",
     "scripts": {
       "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --poll --respawn src/server.ts",
-      "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
+      "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
+      "seed:create": "ts-node-dev ./node_modules/typeorm/cli -c seed migration:create -n",
+      "seed:run": "ts-node-dev ./node_modules/typeorm/cli -c seed migration:run",
+      "seed:revert": "ts-node-dev ./node_modules/typeorm/cli -c seed migration:revert"
     },
     "dependencies": {
       "express": "^4.17.2",
       "mysql": "^2.18.1",
+      "reflect-metadata": "^0.1.13",
       "tsyringe": "^4.6.0",
-      "typeorm": "^0.2.41"
+      "typeorm": "^0.2.41",
+      "xhr2": "^0.2.1"
     },
     "devDependencies": {
       "@types/express": "^4.17.13",
@@ -1148,6 +1163,11 @@ Lockfile:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
     integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
+  
+  xhr2@^0.2.1:
+    version "0.2.1"
+    resolved "https://registry.yarnpkg.com/xhr2/-/xhr2-0.2.1.tgz#4e73adc4f9cfec9cbd2157f73efdce3a5f108a93"
+    integrity sha512-sID0rrVCqkVNUn8t6xuv9+6FViXjUVXq8H5rWOH2rz9fDNQEd4g0EA2XlcEdJXRz5BMEn4O1pJFdT+z4YHhoWw==
   
   xml2js@^0.4.23:
     version "0.4.23"

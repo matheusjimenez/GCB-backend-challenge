@@ -6,6 +6,7 @@ interface IDoctorRepository{
     create(data: ICreateDoctorDTO): Promise<void>;
     findByCRM(crm: number): Promise<Doctor>;
     softDelete(doctor: Doctor): Promise<void>;
+    list(): Promise<Doctor[]>;
 }
 
 export { IDoctorRepository }

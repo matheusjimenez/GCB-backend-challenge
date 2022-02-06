@@ -1,0 +1,7 @@
+
+
+class UpdateDoctorUseCase{
+
+}
+
+export { UpdateDoctorUseCase }
